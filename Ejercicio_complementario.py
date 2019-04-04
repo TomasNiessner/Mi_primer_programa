@@ -1,3 +1,6 @@
+
+
+
 number_to_guess = 14
 
 user_number = int(input("Adivina un numero: "))
