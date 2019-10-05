@@ -95,17 +95,19 @@ def find_contact(contacts):
     contact_indexes = [] #Lista que va a tener enteros, que son una referencia al indice.
     contact_counter = 0 #La cantidad de contactos que resultaron de la búsqueda.
 
+    print("He encontrado el/los siguiente/s contacto/s: ")
+
     for contact in contacts:
         if contact["name"].find(search_term) >= 0 or contact["email"].find(search_term) >= 0:
+            print("{} - {}".format(contact_counter, contact["name"]))
             found_contacts.append(contact)
             contact_indexes.append(contact_counter)
             contact_counter += 1
-            sleep(2)
+
 
     contact_index = 0 #no borrar
 
     if len(contact_indexes) == 1:
-        print("He encontrado los siguientes contactos:")
         print("\nInformación sobre {}\n".format(found_contacts[contact_index]["name"]))
         print("Nombre: {name}, Telefono: {phone}, Email: {email}\n\n".format(**found_contacts[contact_index]))
         sleep(2)
@@ -113,7 +115,6 @@ def find_contact(contacts):
 
     elif len(contact_indexes) > 1:
         contact_index = ask_until_option_expected(contact_indexes)
-        print("He encontrado los siguientes contactos:")
         print("\nInformación sobre {}\n".format(found_contacts[contact_index]["name"]))
         print("Nombre: {name}, Telefono: {phone}, Email: {email}\n\n".format(**found_contacts[contact_index]))
         sleep(2)
